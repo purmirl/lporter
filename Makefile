@@ -1,7 +1,7 @@
 
 all : lporter
 
-lporter : main.o cui.o
+lporter : main.o cui.o porter.o
 	g++ -o lporter main.o cui.o porter.o -lpcap
 
 main.o : main.cpp
