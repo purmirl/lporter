@@ -12,6 +12,10 @@ using namespace std;
 
 class Cui{
 	public:
-		
+		Cui();
+		~Cui();
+		void printStartCui();
+		void printHelpCui();
+		string printCommandLine();		
 };
 

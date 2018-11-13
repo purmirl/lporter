@@ -7,12 +7,22 @@
 
 #include "cui.h"
 #include <string>
+#include <stdlib.h>
 
 using namespace std;
 
+Cui::Cui(){ 
+
+}
+
+Cui::~Cui(){
+
+}
+
 void Cui::printStartCui(){
+	system("clear");
 	printf("lporter 1.0 \n");
-	printf("Copyright 2018 PeTrA. All rights reserved.\n");
+	printf("Copyright 2018 PeTrA. All rights reserved.\n\n");
 	
 	return;
 }

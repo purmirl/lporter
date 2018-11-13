@@ -7,7 +7,18 @@
 
 #include <iostream>
 
+#include "cui.h"
+
+static Cui cui;
+
 using namespace std;
 
 int main(){
+	cui.printStartCui();
+	while(1){
+		cui.printCommandLine();
+	}			
+
+	return 0;
 }
+
