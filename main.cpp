@@ -8,8 +8,10 @@
 #include <iostream>
 
 #include "cui.h"
+#include "porter.h"
 
 static Cui cui;
+static Porter porter;
 
 using namespace std;
 
