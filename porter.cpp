@@ -16,6 +16,8 @@
 #include <unistd.h>
 #include <stdint.h>
 
+#include <string.h>
+
 using namespace std;
 
 Porter::Porter(){}
@@ -23,10 +25,11 @@ Porter::Porter(){}
 Porter::~Porter(){}
 
 void Porter::packetReader(){
+	int res;
 	char deviceCharName[128];
 	string deviceStringName = "";
 
-	char* errbuf[1024];
+	char errbuf[1024];
 	const u_char* packet;
 	pcap_t* handle;
 	bpf_u_int32 mask;
@@ -40,7 +43,7 @@ void Porter::packetReader(){
 		exit(2);
 	}
 	
-	//copy device string name to device char* name 
+	// copy device string name to device char* name 
 	strcpy(deviceCharName, deviceStringName.c_str());
 	
 	// if device name copy is failed....
@@ -56,8 +59,22 @@ void Porter::packetReader(){
 		exit(2);
 	}
 	
-
-		
+	handle = pcap_open_live(deviceCharName, BUFSIZ, 1, 1000, errbuf);
+	
+	// if cannot the device....
+	if(handle == NULL){
+		fprintf(stderr, "could not open device %s : %s\n", deviceCharName, errbuf);
+		exit(2);
+	}
+	
+	while(1){
+		res = pcap_next_ex(handle, &header, &packet);
+		printf("%d bytes packet read.\n", header->len);
+		if(res == 0){
+			printf("error : packet reading is failed.\n");
+			continue;
+		}
+	}	
 }
 
 void Porter::packetParser(){
