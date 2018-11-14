@@ -1,4 +1,4 @@
 # install libpcap --> # yum install libpcap*
 # gcc patch --> # yum install gcc-c++
 # Centos7 time set --> # rdate -s "ntp server domain name"
-
+#                  --> # echo "rdate -s "ntp server domain name"" >> /etc/rc.d/rc.local
