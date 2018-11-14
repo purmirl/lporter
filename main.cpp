@@ -17,7 +17,7 @@ using namespace std;
 
 int main(){
 	cui.printStartCui();
-	porter.packetReader();
+
 	while(1){
 		cui.printCommandLine();
 	}			

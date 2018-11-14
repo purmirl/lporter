@@ -40,6 +40,24 @@ void Porter::packetReader(){
 		exit(2);
 	}
 	
+	//copy device string name to device char* name 
+	strcpy(deviceCharName, deviceStringName.c_str());
+	
+	// if device name copy is failed....
+	if(deviceCharName == NULL){
+		fprintf(stderr, "device name recognition is failed. : %s\n", errbuf);
+		exit(2);
+	}
+	
+	if(pcap_lookupnet(deviceCharName, &net, &mask, errbuf) == -1){
+		fprintf(stderr, "could not get netmask for device %s. : %s\n", deviceCharName, errbuf);
+		net = 0;
+		mask = 0;
+		exit(2);
+	}
+	
+
+		
 }
 
 void Porter::packetParser(){
