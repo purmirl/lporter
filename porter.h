@@ -22,6 +22,6 @@ class Porter{
 	public:
 		Porter();
 		~Porter();
-		void packetReader();
+		void packetReader(string _device);
 		void packetParser();
 };

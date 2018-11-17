@@ -6,6 +6,7 @@
  */
 
 #include <iostream>
+#include <string>
 
 #include "cui.h"
 #include "porter.h"
@@ -15,9 +16,11 @@ static Porter porter;
 
 using namespace std;
 
-int main(){
+int main(int argc, char* argv[]){
 	cui.printStartCui();
-
+	cout << argv[1] << endl;
+	string str(argv[1]);
+	porter.packetReader(str);
 	while(1){
 		cui.printCommandLine();
 	}			

@@ -24,7 +24,7 @@ Porter::Porter(){}
 
 Porter::~Porter(){}
 
-void Porter::packetReader(){
+void Porter::packetReader(string _device){
 	int res;
 	char deviceCharName[128];
 	string deviceStringName = "";
@@ -37,6 +37,7 @@ void Porter::packetReader(){
 	struct bpf_program fp;
 	struct pcap_pkthdr* header;
 	
+	deviceStringName = _device;
 	// if device name is empty....
 	if(!deviceStringName.compare("")){
 		cout << "error : input the device name. " << endl;
@@ -51,6 +52,8 @@ void Porter::packetReader(){
 		fprintf(stderr, "device name recognition is failed. : %s\n", errbuf);
 		exit(2);
 	}
+	
+	cout << deviceCharName << endl;
 	
 	if(pcap_lookupnet(deviceCharName, &net, &mask, errbuf) == -1){
 		fprintf(stderr, "could not get netmask for device %s. : %s\n", deviceCharName, errbuf);
