@@ -9,7 +9,7 @@
 #include <netinet/in.h>
 #include <netinet/ether.h>
 #include <arpa/inet.h>
-#include <pcap.h>
+#include <pcap/pcap.h>
 #include <stdlib.h>
 #include <stdio.h>
 #include <string>
@@ -72,11 +72,15 @@ void Porter::packetReader(string _device){
 	
 	while(1){
 		res = pcap_next_ex(handle, &header, &packet);
-		printf("%d bytes packet read.\n", header->len);
+		// printf("%d bytes packet read.\n", header->len);
 		if(res == 0){
-			printf("error : packet reading is failed.\n");
+			//printf("%d bytes packet read.\n", header->len);
+			continue;
+		}else if(res == -1){
+			printf("error : packet reading if failed.\n");
 			continue;
 		}
+		printf("%d bytes packet read.\n", header->len);
 	}	
 }
 
