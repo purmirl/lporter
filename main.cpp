@@ -18,7 +18,7 @@ using namespace std;
 
 int main(int argc, char* argv[]){
 	cui.printStartCui();
-	cout << argv[1] << endl;
+	// cout << argv[1] << endl;
 	string str(argv[1]);
 	porter.packetReader(str);
 	while(1){

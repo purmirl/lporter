@@ -24,4 +24,5 @@ class Porter{
 		~Porter();
 		void packetReader(string _device);
 		void packetParser();
+		void makeLogDirectory();
 };

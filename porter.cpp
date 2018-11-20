@@ -17,6 +17,7 @@
 #include <stdint.h>
 
 #include <string.h>
+#include <ctime>
 
 using namespace std;
 
@@ -53,7 +54,7 @@ void Porter::packetReader(string _device){
 		exit(2);
 	}
 	
-	cout << deviceCharName << endl;
+	// cout << deviceCharName << endl;
 	
 	if(pcap_lookupnet(deviceCharName, &net, &mask, errbuf) == -1){
 		fprintf(stderr, "could not get netmask for device %s. : %s\n", deviceCharName, errbuf);
@@ -70,6 +71,7 @@ void Porter::packetReader(string _device){
 		exit(2);
 	}
 	
+	
 	while(1){
 		res = pcap_next_ex(handle, &header, &packet);
 		// printf("%d bytes packet read.\n", header->len);
@@ -81,11 +83,28 @@ void Porter::packetReader(string _device){
 			continue;
 		}
 		printf("%d bytes packet read.\n", header->len);
-	}	
+	}
+	return;	
 }
 
 void Porter::packetParser(){
 
+}
+
+void Porter::makeLogDirectory(){
+	time_t t_time;
+	struct tm *s_time;
+	char buffer[1024];
+
+	time(&t_time);
+	s_time = localtime(&t_time);
+	strftime(buffer, 1024, "%Y%m%d", s_time);
+	
+	printf(buffer);
+	return;	
+
+	system("mkdir /log");
+	return;
 }
 
 
