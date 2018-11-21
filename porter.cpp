@@ -102,7 +102,7 @@ void Porter::makeLogDirectory(){
 	
 	// printf(buffer);
 
-	system("mkdir /log");
+	system("mkdir ./log");
 	return;
 }
 
