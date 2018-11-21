@@ -100,8 +100,7 @@ void Porter::makeLogDirectory(){
 	s_time = localtime(&t_time);
 	strftime(buffer, 1024, "%Y%m%d", s_time);
 	
-	printf(buffer);
-	return;	
+	// printf(buffer);
 
 	system("mkdir /log");
 	return;
