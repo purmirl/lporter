@@ -6,10 +6,15 @@
  */
 
 #include "porter.h"
+
 #include <netinet/in.h>
 #include <netinet/ether.h>
+#include <netinet/ip.h>
+#include <netinet/tcp.h>
+
 #include <arpa/inet.h>
 #include <pcap/pcap.h>
+
 #include <stdlib.h>
 #include <stdio.h>
 #include <string>
@@ -57,7 +62,8 @@ void Porter::packetReader(string _device){
 	// cout << deviceCharName << endl;
 	
 	if(pcap_lookupnet(deviceCharName, &net, &mask, errbuf) == -1){
-		fprintf(stderr, "could not get netmask for device %s. : %s\n", deviceCharName, errbuf);
+		fprintf(stderr, "could not get netmask for device %s. : %s\n"
+			, deviceCharName, errbuf);
 		net = 0;
 		mask = 0;
 		exit(2);
@@ -88,7 +94,9 @@ void Porter::packetReader(string _device){
 }
 
 void Porter::packetParser(){
-
+	const struct ether_header* ethernetHeader;
+	const struct ip* ipHeader;
+	const struct tcphdr* tcpHeader;
 }
 
 void Porter::makeLogDirectory(){
