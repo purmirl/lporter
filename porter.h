@@ -23,6 +23,6 @@ class Porter{
 		Porter();
 		~Porter();
 		void packetReader(string _device);
-		void packetParser();
+		void packetParser(const u_char* packet);
 		void makeLogDirectory();
 };

@@ -89,14 +89,21 @@ void Porter::packetReader(string _device){
 			continue;
 		}
 		printf("%d bytes packet read.\n", header->len);
+		packetParser(packet);
 	}
 	return;	
 }
 
-void Porter::packetParser(){
+void Porter::packetParser(const u_char* _packet){
 	const struct ether_header* ethernetHeader;
 	const struct ip* ipHeader;
 	const struct tcphdr* tcpHeader;
+	
+	ethernetHeader = (struct ether_header*)_packet;
+	// cout << ntohs(ethernetHeader->ether_type) << endl;
+	if(ntohs(ethernetHeader->ether_type)==ETHERTYPE_IP){
+		cout << "ether type : ip" << endl;
+	}
 }
 
 void Porter::makeLogDirectory(){
