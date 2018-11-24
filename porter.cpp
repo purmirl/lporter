@@ -26,9 +26,15 @@
 
 using namespace std;
 
-Porter::Porter(){}
+Porter::Porter(){
+	init();
+}
 
 Porter::~Porter(){}
+
+void Porter::init(){
+	ether_type = "";
+}
 
 void Porter::packetReader(string _device){
 	int res;
@@ -103,6 +109,10 @@ void Porter::packetParser(const u_char* _packet){
 	// cout << ntohs(ethernetHeader->ether_type) << endl;
 	if(ntohs(ethernetHeader->ether_type)==ETHERTYPE_IP){
 		cout << "ether type : ip" << endl;
+		ether_type = "ETHERTYPE_IP";
+	}else if(ntohs(ethernetHeader->ether_type)==ETHERTYPE_ARP){
+		cout << "ether type : arp" << endl;
+		ether_type = "ETHERTYPE_ARP";
 	}
 }
 

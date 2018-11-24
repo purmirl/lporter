@@ -25,4 +25,8 @@ class Porter{
 		void packetReader(string _device);
 		void packetParser(const u_char* packet);
 		void makeLogDirectory();
+	private:
+		void init();
+		string ether_type;
+		
 };
