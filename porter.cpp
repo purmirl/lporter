@@ -107,12 +107,15 @@ void Porter::packetParser(const u_char* _packet){
 	
 	ethernetHeader = (struct ether_header*)_packet;
 	// cout << ntohs(ethernetHeader->ether_type) << endl;
-	if(ntohs(ethernetHeader->ether_type)==ETHERTYPE_IP){
+	if(ntohs(ethernetHeader->ether_type) == ETHERTYPE_IP){
 		cout << "ether type : ip" << endl;
 		ether_type = "ETHERTYPE_IP";
-	}else if(ntohs(ethernetHeader->ether_type)==ETHERTYPE_ARP){
+	}else if(ntohs(ethernetHeader->ether_type) == ETHERTYPE_ARP){
 		cout << "ether type : arp" << endl;
 		ether_type = "ETHERTYPE_ARP";
+	}else if(ntohs(ethernetHeader->ether_type) == ETHERTYPE_PUP){
+		cout << "ether type : pup" << endl;
+		ether_type = "ETHERTYPE_PUP";
 	}
 }
 
