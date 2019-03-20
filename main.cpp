@@ -19,7 +19,14 @@ using namespace std;
 int main(int argc, char* argv[]){
 	cui.printStartCui();
 	// cout << argv[1] << endl;
+	
+	// cout << "" << endl;
+	cout << "System Messages >> " << endl;
+	// cout << "----------------" << endl;
 	porter.makeLogDirectory();
+	cout << "----------------" << endl;
+	cout << "" << endl;
+
 	string str(argv[1]);
 	porter.packetReader(str);
 	while(1){
