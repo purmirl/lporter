@@ -116,6 +116,12 @@ void Porter::packetParser(const u_char* _packet){
 	}else if(ntohs(ethernetHeader->ether_type) == ETHERTYPE_PUP){
 		cout << "ether type : pup" << endl;
 		ether_type = "ETHERTYPE_PUP";
+	}else if(ntohs(ethernetHeader->ether_type) == ETHERTYPE_TRAIL){
+		cout << "ether type : trail" << endl;
+		ether_type = "ETHERTYPE_TRAIL";	
+	}else if(ntohs(ethernetHeader->ether_type) == ETHERTYPE_NTRAILER){
+		cout << "ether_type : ntrailer" << endl;
+		ether_type = "ETHERTYPE_NTRAILER";
 	}
 }
 
