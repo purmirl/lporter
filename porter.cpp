@@ -100,6 +100,14 @@ void Porter::packetReader(string _device){
 	return;	
 }
 
+/**
+ * ETHERTYPE : IP, ARP, PUP, Trail, Ntrailer
+ *  - ETHERTYPE_IP
+ *  - ETHERTYPE_ARP
+ *  - ETHERTYPE_PUP
+ *  - ETHERTYPE_TRAIL
+ *  - ETHERTYPE_NTRAILER
+ */
 void Porter::packetParser(const u_char* _packet){
 	const struct ether_header* ethernetHeader;
 	const struct ip* ipHeader;
