@@ -14,10 +14,14 @@ class Option{
 	public:
 		Option();
 		~Option();
+		string INTERFACE_OPTION;
+		
+		void setInterface(int _isInterface, string _INTERFACE_NAME);
+		int getIsInterface();
+		string getInterfaceName();
 	
 	private:
 		void init();
 		int isInterface;
-		string INTERFACE_NAME;
-	 			
+		string INTERFACE_NAME;		
 };
