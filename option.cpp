@@ -17,7 +17,7 @@ Option::Option(){
 
 Option::~Option(){}
 
-void Option::void init(){
+void Option::init(){
 	INTERFACE_OPTION = "-i";
 	isInterface = 0;
 	INTERFACE_NAME = "";
@@ -33,7 +33,7 @@ int Option::getIsInterface(){
 	return isInterface;
 }
 
-string Option::getInterface(){
+string Option::getInterfaceName(){
 	return INTERFACE_NAME;	
 }
 
